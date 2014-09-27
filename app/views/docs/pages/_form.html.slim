@@ -1,0 +1,35 @@
+= semantic_form_for @page do |f|
+  .row
+    .col-sm-6
+      = f.input :title
+    .col-sm-4
+      = f.input :page_category_slug
+    .col-sm-2 style="padding-top: 25px;"
+      = f.action :submit, button_html: { class: "btn btn-primary btn-block" }
+  .row
+    .col-sm-2
+      = f.input :via
+    .col-sm-4
+      = f.input :path
+    .col-sm-4
+      = f.input :reqs
+    .col-sm-2
+      = f.input :weight
+  
+  ul.nav.nav-tabs role="tablist"
+    li.active
+      = link_to "Description", "#desc", role: 'tab', data: { toggle: 'tab' }
+    li
+      = link_to fa_icon(:eye, text: "Preview"), "#preview", role: 'tab', data: { toggle: 'tab' }
+    li
+      = link_to fa_icon(:code, text: "Example"), "#example", role: 'tab', data: { toggle: 'tab' }
+  
+  
+  = f.inputs do
+    .tab-content
+      #desc.tab-pane.fade.in.active
+        = f.input :body, input_html: { rows: 30, class: "process-markdown" }, label: false
+      #preview.tab-pane
+        .preview-markdown data-source=".process-markdown"
+      #example.tab-pane 
+        = f.input :example, input_html: { rows: 20 }, label: false

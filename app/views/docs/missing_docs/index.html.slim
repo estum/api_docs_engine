@@ -1,0 +1,9 @@
+- content_for :title, "Missing"
+table.table
+  tbody
+    - @missing_docs.each do |route|
+      tr
+        td = route.path
+        td = route.via
+        td = route.reqs
+        td = link_to "Create page", new_page_path(page: route.to_page_attributes), class: "btn btn-default btn-sm"

@@ -1,0 +1,24 @@
+.action
+  h3 id=page.anchor = page.title
+
+  .panel.panel-default
+    .panel-heading
+      code == "#{content_tag :strong, page.via} #{page.only_path}#{content_tag :span, page.only_query, class: 'text-muted'}"
+    .navbar.navbar-default.navbar-static-top.panel-navbar
+      ul.nav.navbar-nav role="tablist"
+        li class=( "active" if page.body.present? )
+          = link_to fa_icon('info-circle'), "##{page.anchor}-desc", role: "tab", data: { toggle: "tab" }
+        li class=( "active" unless page.body.present? )
+          = link_to fa_icon(:code, text: "Example"), "##{page.anchor}-example", role: "tab", data: { toggle: "tab" }
+        li
+          = link_to fa_icon(:edit), edit_page_path(page)
+    
+    .tab-content.panel-body
+      .tab-pane id="#{page.anchor}-desc" class=( "active" if page.body.present? )
+        p
+        - if page.body?
+          == markdown(page.body)
+      .tab-pane id="#{page.anchor}-example" class=( "active" unless page.body.present? )
+        p
+        - if page.example?
+          pre: samp.json == page.example

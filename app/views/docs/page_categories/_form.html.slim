@@ -1,0 +1,19 @@
+= semantic_form_for @page_category do |f|
+  .row
+    .col-sm-5
+      = f.input :title
+    .col-sm-5
+      = f.input :slug
+    .col-sm-2 style="padding-top: 25px;"
+      = f.action :submit, button_html: { class: "btn btn-primary btn-block" }
+  
+  ul.nav.nav-tabs role="tablist"
+    li.active = link_to "Description", "#desc",    role: 'tab', data: { toggle: 'tab' }
+    li        = link_to "Preview",     "#preview", role: 'tab', data: { toggle: 'tab' }
+  
+  = f.inputs do
+    .tab-content
+      #desc.tab-pane.fade.in.active
+        = f.input :body, input_html: { rows: 30, class: "process-markdown" }, label: false
+      #preview.tab-pane
+        .preview-markdown data-source=".process-markdown"

@@ -1,0 +1,24 @@
+doctype 5
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title = content_for?(:title) ? yield(:title) : "Kefir API Documentation"
+    = csrf_meta_tags
+    = stylesheet_link_tag "docs", media: "all"
+    = javascript_include_tag "docs"
+  body
+    .container-fluid
+      .row
+        #left-sidebar.col-sm-3.col-md-2.sidebar
+          ul.nav.nav-sidebar
+            - Docs::PageCategory.all.sort_by(&:weight).each do |c|
+              = li_active_to c.only_title, page_category_pages_path(c), data: { edit_path: edit_page_category_path(c) }
+          .row
+            .btn-group.btn-group-xs.pull-right
+              = link_to fa_icon(:plus, text: "Add category"), new_page_category_path, class: "btn btn-default"
+              = link_to fa_icon(:warning, text: "Missing"),   missing_docs_path,      class: "btn btn-default"
+        
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          h1.page-header = content_for?(:title) ? yield(:title) : "Kefir API Documentation"
+          = yield

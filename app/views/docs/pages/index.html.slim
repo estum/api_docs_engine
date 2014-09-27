@@ -1,0 +1,34 @@
+- content_for :title, @page_category.only_title
+
+.row
+  .col-md-9
+    - if @pages.any?
+      .panel.panel-default
+        .panel-heading: h4.panel-title Методы
+        table.table.table-condensed
+          tbody
+            - @pages.each do |page|
+              tr
+                td
+                  code == "#{content_tag :strong, page.via} #{page.only_path}"
+                td 
+                  = link_to page.title, "##{page.anchor}"
+                td 
+                  small.text-muted = page.reqs
+    
+    - if @page_category.body?
+      == markdown(@page_category.body)
+    
+    - if @pages.any? 
+      .actions
+        = render @pages
+  
+  .col-md-3
+    .navbar-spyscroll
+      ul.nav.nav-right-spy role="tablist"
+        - @pages.each do |page|
+          li = link_to "#{content_tag(:strong, page.via)} #{page.only_path}".html_safe, "##{page.anchor}"
+      hr /
+      .btn-group.btn-group-xs
+        = link_to fa_icon(:edit, text: "Edit"),     [:edit, @page_category],       class: "btn btn-default"
+        = link_to fa_icon(:plus, text: "Add page"), [:new, @page_category, :page], class: "btn btn-default"

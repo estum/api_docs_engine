@@ -5,7 +5,7 @@ $LOAD_PATH.push(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = "api_docs_engine"
-  s.version     = "0.0.1"
+  s.version     = "0.1.0"
   s.authors     = ["Tõnis Simo"]
   s.email       = ["anton.estum@gmail.com"]
   s.summary     = "API documentation engine for Rails 4"

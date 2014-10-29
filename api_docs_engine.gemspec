@@ -32,5 +32,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails'
   s.add_dependency 'bootstrap-sass', '~> 3.1.1'
   s.add_dependency 'formtastic-bootstrap', '~> 3.0.0'
-  s.add_dependency 'font-awesome-rails', '~> 4.1.0.0'
+  s.add_dependency 'font-awesome-rails', '>= 4', '< 5'
 end

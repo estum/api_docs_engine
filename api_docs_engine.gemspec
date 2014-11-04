@@ -22,15 +22,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id', '~> 5.0.0'
   s.add_dependency 'turbolinks', '~> 2.3.0'
   s.add_dependency 'formtastic', '~> 2.3.0'
-  s.add_dependency 'tilt', '~> 1.4.1'
-  s.add_dependency 'slim-rails', '~> 2.1.5'
+  s.add_dependency 'slim-rails', '>= 2.0.0'
   
-  s.add_dependency 'coffee-rails', '~> 4.0.1'
-  s.add_dependency 'sass-rails', '~> 4.0.1'
-  s.add_dependency 'uglifier', '~> 2.5.1'
+  s.add_dependency 'coffee-rails', '>= 3'
+  s.add_dependency 'sass-rails', '>= 3'
   
   s.add_dependency 'jquery-rails'
-  s.add_dependency 'bootstrap-sass', '~> 3.1.1'
-  s.add_dependency 'formtastic-bootstrap', '~> 3.0.0'
+  s.add_dependency 'bootstrap-sass', '>= 3', "< 4"
+  s.add_dependency 'formtastic-bootstrap', '~> 3'
   s.add_dependency 'font-awesome-rails', '>= 4', '< 5'
 end

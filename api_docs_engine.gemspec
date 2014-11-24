@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet', '~> 3.1.2'
   s.add_dependency 'friendly_id', '~> 5.0.0'
   s.add_dependency 'turbolinks', '~> 2.3.0'
-  s.add_dependency 'formtastic', '~> 2.3.0'
+  s.add_dependency 'formtastic', '>= 2.3.0'
   s.add_dependency 'slim-rails', '>= 2.0.0'
   
   s.add_dependency 'coffee-rails', '>= 3'
